@@ -1,23 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
+---
+layout: default
+title: {{ site.name }}
+---
 
-<title> Victor Melo - Web Developer </title>
-
-<link rel="stylesheet" href="styles.css">
-</head>
-
-<body>
-
-<!--<meta http-equiv="refresh" content=1;url="http://www.victormelo.esy.es">-->
-<div id="emConstrucao">
-
-<h1>Site em Construção</h1>
-<span>Enquanto isso, sinta-se à vontade para me contatar pelo seguinte email:<br> <i>victormelo.dev@outlook.com</i></span>
-
-<span>Abraço,<br>Victor Melo.</span>
+<div id="home">
+  <h1>Blog Posts</h1>
+  <ul class="posts">
+    {% for post in site.posts %}
+      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
+  </ul>
 </div>
-
-</body>
-
-</html>
