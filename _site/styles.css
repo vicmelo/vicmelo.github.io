@@ -1,0 +1,19 @@
+#emConstrucao{
+  
+  margin:auto;
+  text-align:center; 
+}
+
+#emConstrucao span{
+  
+  display:block;
+  margin-top:20pt;
+  
+}
+
+#email{
+  
+  text-decoration:underline;
+  color:blue;
+  
+}
