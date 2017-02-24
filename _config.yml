@@ -15,3 +15,5 @@ gems:
 
 #Others
 markdown: kramdown
+future: true
+timezone: UTC-3
