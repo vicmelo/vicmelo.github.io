@@ -1,7 +1,7 @@
 ---
 layout: default
 title:  "Welcome to my blog!"
-date:   2017-22-02 18:00:00
+date:   2017-02-22 18:00:00
 categories: main
 ---
 
