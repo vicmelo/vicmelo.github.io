@@ -1,64 +1,60 @@
-# Site settings 配置站点
-title: '廖柯宇的独立博客'
-description: '昵称悟空，千禧一代，前端开发者/伪极客/灵魂摄影师，热爱技术&设计。很高兴能在这里与你分享我对技术和生活的思考。'
-keyword: '廖柯宇, 廖柯宇的独立博客, 廖柯宇的博客, 前端, 前端开发, 前端博客, javascript, vuejs, nodejs, 设计'
-url: 'http://liaokeyu.com' # your host
-baseurl: '/'
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
 
-# Navigation links
-nav:
-  home: '/'
-  tags: '/tags.html'
+# Site settings
+title: Ashwathama
+description: > # this means to ignore newlines until "baseurl:"
+ Ashwathama is a minimal website with an app like design. It also features card layouts for website elements.
+baseurl: "/ashwath" # the subpath of your site, e.g. /blog
+url: "http://webjeda.com"
+permalink: :title/
+full-url: "http://ashwathama.s3-website-us-east-1.amazonaws.com/" # the base hostname & protocol for your site
 
-# Author 配置博主信息
-author: '廖柯宇'
-nickname: '悟空'
-bio: '前端开发者，热爱技术&设计，简单乐观爱创造'
-avatar: 'assets/img/profile.png'
 
-# Search
-search: true
+# CSS
+sass:
+  style: compressed
 
-# Night mode
-nightMode: true
+# Comments - Go to Disqus.com > sign up > get the short-name > insert it here
+disqus-shortname: 
 
-# Comments
-disqus: false
-disqus_url: 'https://liaokeyu.disqus.com/embed.js'
+# Tracker
+analytics: UA-83979019-1
 
-# Share
-social-share: true
-social-share-items: ['wechat', 'weibo', 'douban', 'twitter']
+# Form Settings
+#
+# Contact form can be enabled by getting an API key from https://getsimpleform.com/
+simpleform-token: b6d4be9b039b666b3311e1ddcbfb577c
 
-# theme color 主题皮肤
-theme-color: 'default'  # pink or default
+# Redirect users after submitting the form
+redirect-to: http://blog.webjeda.com/thank-you/
 
-# Post header background patterns (when the post no cover): circuitBoard, overlappingCircles, food, glamorous, ticTacToe, seaOfClouds
-postPatterns: 'circuitBoard'
+# Site version
+version: 0.9
 
-# SNS settings 配置社交网站url: weibo, zhihu, twitter, instagrame, juejin, github, douban, facebook, dribble, uicn, jianshu, medium, linkedin
-sns:
-  weibo: '//weibo.com/lovecolcol'
-  juejin: '//juejin.im/user/57a6f434165abd006159b4cc'
-  instagram: '//www.instagram.com/steveliaocn'
-  github: '//github.com/kaeyleo'
 
-# Tags 设置标签
-recommend-tags: true # whether or not display recommend-tags on the sidebar
-recommend-condition-size: 12 # a tag will be recommended if the size of it is more than this value
+# Post date background - This will change the background of the post date and tag ribbon according to the theme. If set to no default green background will be used. If yes then the theme color scheme is used.
+
+change-date-bg: no
+
 
 # Build settings
-paginate: 6
-paginate_path: 'page:num'
-exclude: ['node_modules', 'dev', 'package.json', 'gulpfile.js', '.gitignore', 'README.md']
-
-# Markdown
 markdown: kramdown
-highlighter: rouge
-kramdown:
-  input: GFM
 
-RSS: false
+include: [_pages] # Includes files inside _pages directory [Do not remove this]
 
-# Plugins
-gems: [jekyll-paginate]
+author:
+  name: Ashwathama
+  image: ashwat.jpg # The author image will be shown on the header. Place this image in /images/ folder.
+  about: Ashwathama is a sage who wrote Mahabharatha. He is the son of Drona. He fought on the Kaurava side against the Pandavas. He put up a pretty good fight with mighty Bhima.
+  twitter: webjeda  # https://twitter.com/ is automatically added
+  facebook: webjeda # https://facebook.com/ is automatically added
+  email: hello@webjeda.com # mailto: is automatically added
+  
+gems: 
+  - jekyll-seo-tag
+  - jekyll-paginate

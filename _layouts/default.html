@@ -1,14 +1,49 @@
+---
+layout: compress
+---
+
 <!DOCTYPE html>
 <html>
 {% include head.html %}
+
 <body>
-    <!--[if lt IE 10]>
-<div class="alert-danger" role="alert">你的浏览器实在太太太旧了，放学别走，升级完浏览器再说！<a target="_blank" class="alert-link" href="http://browsehappy.com">立即升级</a></div>
-<![endif]-->
-    <input id="nm-switch" type="hidden" value="{{ site.nightMode }}">
-    {{ content }}
-    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
-    <script src="{{ site.baseurl }}assets/js/prism.js"></script>
-    <script src="{{ site.baseurl }}assets/js/index.min.js"></script>
+   <div class="container">
+       
+    {% include sidebar.html %}
+
+    <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->   
+        <div id="main">
+
+             {% include header.html %}
+                    <div class="page-content">
+                        <div class="wrapper">
+                            {{ content }}
+                        </div>
+                    {% include footer.html %}
+                    </div>
+                {% if site.analytics %}
+                    {% include analytics.html %}
+                {% endif %}  
+        </div>
+        
+        
+        
+        
+        
+<script>
+    /* Set the width of the side navigation to 250px */
+    function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    /* Set the width of the side navigation to 0 */
+    function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    }
+</script>
+        
+        
+</div>            
+        
 </body>
 </html>
