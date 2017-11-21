@@ -1,0 +1,22 @@
+var projects =[
+    {
+        "name":"Echo Tracking",
+        "imageURL":"images/projects/echo.jpg",
+        "url":"https://itunes.apple.com/br/app/echo-tracking/id1245288694?mt=8"
+    },
+    {
+        "name":"Ciboard",
+        "imageURL":"images/projects/ciboard.jpg",
+        "url":"https://itunes.apple.com/us/app/ciboard/id1293364926?mt=8"
+    },
+    {
+        "name":"Home",
+        "imageURL":"images/projects/home.jpg",
+        "url":"https://itunes.apple.com/us/app/home-journey-of-life/id1262556986?mt=8"
+    },
+    {
+        "name":"Luber's Rush in Taxiland",
+        "imageURL":"images/projects/luber.jpg",
+        "url":"https://itunes.apple.com/br/app/lubers-rush-in-taxiland/id1252722691?mt=8"
+    }
+];

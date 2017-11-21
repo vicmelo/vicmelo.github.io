@@ -1,0 +1,37 @@
+var papers =[
+    {
+        "title":"Mirs: A Modular Approach for Using Meta-information in Agent-Oriented Programming Languages",
+        "authors":"Victor S. Melo, Alison R. Panisson, Rafael H. Bordini",
+        "url":"https://www.researchgate.net/publication/316994408_MIRS_A_Modular_Approach_for_Using_Meta-information_in_Agent-Oriented_Programming_Languages",
+        "year":"2017",
+        "conference":"19th International Workshop on Trust in Agent Societies"
+    },
+    {
+        "title":"Metainformações como Critérios de Decisão entre Informações Conflitantes em Sistemas Multiagentes",
+        "authors":"Victor S. Melo, Alison R. Panisson, Rafael H. Bordini",
+        "url":"http://www.lbd.dcc.ufmg.br/bdbcomp/servlet/Evento?id=860",
+        "year":"2016",
+        "conference":"XIII Encontro Nacional de inteligência Artificial e Computacional"
+    },
+    {
+        "title":"Using Preferences over Sources of Information in Argumentation-Based Reasoning",
+        "authors":"Alison R. Panisson, Victor S. Melo, Rafael H. Bordini",
+        "url":"http://ieeexplore.ieee.org/document/7839558/",
+        "year":"2016",
+        "conference":"5th Brazilian Conference on Intelligent Systems (BRACIS)"
+    },
+    {
+        "title":"Argumentation-based reasoning using preferences over sources of information",
+        "authors":"Victor S. Melo, Alison R. Panisson, Rafael H. Bordini",
+        "url":"http://www.ifaamas.org/Proceedings/aamas2016/pdfs/p1337.pdf",
+        "year":"2016",
+        "conference":"15th International Conference on Autonomous Agents and Multiagent Systems (AAMAS 2016)"
+    },
+    {
+        "title":"Trust on Beliefs: Source, Time and Expertise",
+        "authors":"Victor S. Melo, Alison R. Panisson, Rafael H. Bordini",
+        "url":"http://ceur-ws.org/Vol-1578/paper6.pdf",
+        "year":"2016",
+        "conference":"18th International Workshop on Trust in Agent Societies"
+    }
+];
