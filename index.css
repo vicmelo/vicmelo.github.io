@@ -57,7 +57,8 @@ body {
 }
 
 #header_center {
-	height:400px;
+	max-height:400px;
+    min-height:375px;    
     top:50%;
     margin-top:-150pt;
     box-shadow: 0px 2px 4px rgba(0,0,0,0.5);
