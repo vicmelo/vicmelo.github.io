@@ -166,6 +166,9 @@ body {
     #profile_image {
         display: none;
     }
+    #profile_description {
+        border-radius: 8px;
+    }
 
 }
 
