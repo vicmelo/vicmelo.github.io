@@ -40,7 +40,7 @@ body {
 
     /* Set a specific height */
     height: 1033px; 
-    min-height: 300px;
+    min-height: 450px;
 
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
