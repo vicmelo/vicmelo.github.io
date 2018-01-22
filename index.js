@@ -9,9 +9,9 @@ window.onresize = function() {
 
 function resizeHeader() {
 	let header = document.getElementsByTagName("header")[0];
-	var screenHeight = 400;
+	var screenHeight = 450;
 	
-	if (window.innerHeight > 400) 
+	if (window.innerHeight > 450) 
 		screenHeight = window.innerHeight;
     
     document.getElementsByTagName("header")[0].style.height = screenHeight+"px";
