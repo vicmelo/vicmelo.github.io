@@ -162,7 +162,7 @@ body {
     height:100%;
 }
 
-@media screen and (max-width: 575px) {
+@media screen and (max-width: 600px) {
 
     #profile_image {
         display: none;
