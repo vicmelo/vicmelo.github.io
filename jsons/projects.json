@@ -1,5 +1,10 @@
 var projects =[
     {
+        "name":"Lampino",
+        "imageURL":"images/projects/lampino.PNG",
+        "url":"https://github.com/vicmelo/Lampino"
+    },
+    {
         "name":"Echo Tracking",
         "imageURL":"images/projects/echo.jpg",
         "url":"https://itunes.apple.com/br/app/echo-tracking/id1245288694?mt=8"
@@ -18,10 +23,5 @@ var projects =[
         "name":"Luber's Rush in Taxiland",
         "imageURL":"images/projects/luber.jpg",
         "url":"https://itunes.apple.com/br/app/lubers-rush-in-taxiland/id1252722691?mt=8"
-    },
-    {
-        "name":"Lampino",
-        "imageURL":"images/projects/lampino.PNG",
-        "url":"https://github.com/vicmelo/Lampino"
     }
 ];
