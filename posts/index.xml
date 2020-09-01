@@ -15,11 +15,10 @@
             <pubDate>Tue, 01 Sep 2020 16:45:04 -0300</pubDate>
             
             <guid>https://victor.dev.br/posts/my-first-post/</guid>
-            <description>Hello, World! Hello! My name is Victor and I&amp;rsquo;m an iOS consultant at ThoughtWorks, and a computer science undergraduate student at Federal University of Rio Grande do Sul, Brazil.
+            <description>Hello! My name is Victor and I&amp;rsquo;m an iOS consultant at ThoughtWorks, and a computer science undergraduate student at Federal University of Rio Grande do Sul, Brazil.
 I&amp;rsquo;ve been using a personal website since 2017, but it was more like a &amp;ldquo;web business card&amp;rdquo;, showing my projects, social media, and so on.
 Now I want to use this space to share content. The topics will be about anything I find interesting in my &amp;ldquo;computer scientist world&amp;rdquo;, that includes software engineering topics I learn in my daily work at ThoughtWorks, content I found interesting in my college classes, Apple platform development, and other related stuffs.</description>
-            <content type="html"><![CDATA[<h1 id="hello-world">Hello, World!</h1>
-<p>Hello! My name is Victor and I&rsquo;m an iOS consultant at ThoughtWorks, and a computer science undergraduate student at Federal University of Rio Grande do Sul, Brazil.</p>
+            <content type="html"><![CDATA[<p>Hello! My name is Victor and I&rsquo;m an iOS consultant at ThoughtWorks, and a computer science undergraduate student at Federal University of Rio Grande do Sul, Brazil.</p>
 <p>I&rsquo;ve been using a personal website since 2017, but it was more like a &ldquo;web business card&rdquo;, showing my projects, social media, and so on.</p>
 <p>Now I want to use this space to share content. The topics will be about anything I find interesting in my &ldquo;computer scientist world&rdquo;, that includes software engineering topics I learn in my daily work at ThoughtWorks, content I found interesting in my college classes, Apple platform development, and other related stuffs.</p>
 <p>So, see you soon :)</p>
