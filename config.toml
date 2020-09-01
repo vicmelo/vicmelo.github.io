@@ -1,0 +1,61 @@
+baseurl      = "https://victor.dev.br/"
+title        = "Victor S. Melo"
+languageCode = "en-us"
+theme        = "hello-friend-ng"
+paginate     = 10
+
+[params]
+  dateform        = "Jan 2, 2006"
+  dateformShort   = "Jan 2"
+  dateformNum     = "2006-01-02"
+  dateformNumTime = "2006-01-02 15:04 -0700"
+
+  # Subtitle for home
+  homeSubtitle = "👨🏻‍💻 Computer scientist specialized in Apple platforms 🍎"
+
+  # Set disableReadOtherPosts to true in order to hide the links to other posts.
+  disableReadOtherPosts = false
+
+  # Enable sharing buttons, if you linke
+  enableSharingButtons = true
+
+  # Metadata mostly used in document's head
+  description = "Victor S. Melo personal website."
+  keywords = "homepage, blog, iOS, software engineering, computer science"
+  images = ["email"]
+  social = [
+    {url= "https://github.com/vctrsmelo", name = "github"},
+    {url= "https://www.linkedin.com/in/vsmelo/", name = "linkedin"},
+    {url= "https://www.youtube.com/channel/UCuJJHFrL6glIamj0RTryfOw", name = "youtube"}
+  ]
+
+
+  # Default theme "light" or "dark"
+  defaultTheme = "light"
+
+[taxonomies]
+    category = "blog"
+    tag      = "tags"
+    series   = "series"
+
+[languages]
+  [languages.en]
+    title = "Victor S. Melo"
+    subtitle = "👨🏻‍💻 Computer scientist specialized in Apple platforms 🍎"
+    keywords = ""
+    copyright = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
+    readOtherPosts = "Read other posts"
+
+    [languages.en.params.logo]
+      logoText = "cd ~/"
+      logoHomeLink = "/"
+    # or
+    #
+    # path = "/img/your-example-logo.svg"
+    # alt = "Your example logo alt text"
+
+  # And you can even create generic menu
+  [[menu.main]]
+    identifier = "blog"
+    name       = "Blog"
+    url        = "/posts"
