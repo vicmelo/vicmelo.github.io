@@ -24,7 +24,8 @@ In the image above, I have multiple Chrome processes.</description>
 <h1 id="processes">Processes</h1>
 <p>A process can be explained as “a program being executed“.</p>
 <p>A process is not a program. You can have <strong>n</strong> processes for the same program. For example, when you open a tab in Chrome, it creates a new process called <code>Google Chrome Helper (Renderer)</code>. So, Google Chrome can have multiple processes.</p>
-<p><img src="images/s1.png" alt="img"> <em>In the image above, I have multiple Chrome processes.</em></p>
+<p><img src="/static/images/processes.png" alt="img"></p>
+<p><em>In the image above, I have multiple Chrome processes.</em></p>
 <p>It’s important to say that Chrome create these processes not only for tabs, but also for extensions. For example, when I force closed one process, a message appeared “Extension <em>X</em> stopped working”.</p>
 <h2 id="processes-and-the-operating-system">Processes and the Operating System</h2>
 <p>When your OS starts, if it uses UNIX like MacOS, it will start an initial process, and all processes created later will be derived from this one. A process can create other. For example: from a Google Chrome tab, I can open another tab.</p>
