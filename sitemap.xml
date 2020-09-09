@@ -3,27 +3,47 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://victor.dev.br/tags/operating-system/</loc>
+    <lastmod>2020-09-09T15:42:50-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://victor.dev.br/posts/</loc>
+    <lastmod>2020-09-09T15:42:50-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://victor.dev.br/tags/processes/</loc>
+    <lastmod>2020-09-09T15:42:50-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://victor.dev.br/posts/processes-threads/</loc>
+    <lastmod>2020-09-09T15:42:50-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://victor.dev.br/tags/</loc>
+    <lastmod>2020-09-09T15:42:50-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://victor.dev.br/tags/threads/</loc>
+    <lastmod>2020-09-09T15:42:50-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://victor.dev.br/</loc>
+    <lastmod>2020-09-09T15:42:50-03:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://victor.dev.br/posts/my-first-post/</loc>
     <lastmod>2020-09-01T16:45:04-03:00</lastmod>
   </url>
   
   <url>
-    <loc>https://victor.dev.br/posts/</loc>
-    <lastmod>2020-09-01T16:45:04-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://victor.dev.br/tags/</loc>
-    <lastmod>2020-09-01T16:45:04-03:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://victor.dev.br/tags/untagged/</loc>
-    <lastmod>2020-09-01T16:45:04-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://victor.dev.br/</loc>
     <lastmod>2020-09-01T16:45:04-03:00</lastmod>
   </url>
   

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Victor S. Melo</title>
-    <link>https://victor.dev.br/</link>
-    <description>Recent content on Victor S. Melo</description>
+    <title>operating system on Victor S. Melo</title>
+    <link>https://victor.dev.br/tags/operating-system/</link>
+    <description>Recent content in operating system on Victor S. Melo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
     <lastBuildDate>Wed, 09 Sep 2020 15:42:50 -0300</lastBuildDate>
     
-	<atom:link href="https://victor.dev.br/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://victor.dev.br/tags/operating-system/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -22,17 +22,6 @@
 Processes A process can be explained as “a program being executed“.
 A process is not a program. You can have n processes for the same program. For example, when you open a tab in Chrome, it creates a new process called Google Chrome Helper (Renderer). So, Google Chrome can have multiple processes.
 In the image above, I have multiple Chrome processes.</description>
-    </item>
-    
-    <item>
-      <title>Hello, World!</title>
-      <link>https://victor.dev.br/posts/my-first-post/</link>
-      <pubDate>Tue, 01 Sep 2020 16:45:04 -0300</pubDate>
-      
-      <guid>https://victor.dev.br/posts/my-first-post/</guid>
-      <description>Hello! My name is Victor and I&amp;rsquo;m an iOS consultant at ThoughtWorks, and a computer science undergraduate student at Federal University of Rio Grande do Sul, Brazil.
-I&amp;rsquo;ve been using a personal website since 2017, but it was more like a &amp;ldquo;web business card&amp;rdquo;, showing my projects, social media, and so on.
-Now I want to use this space to share content. The topics will be about anything I find interesting in my &amp;ldquo;computer scientist world&amp;rdquo;, that includes software engineering topics I learn in my daily work at ThoughtWorks, content I found interesting in my college classes, Apple platform development, and other related stuffs.</description>
     </item>
     
   </channel>

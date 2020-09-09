@@ -6,8 +6,48 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Tue, 01 Sep 2020 16:45:04 -0300</lastBuildDate>
+        <lastBuildDate>Wed, 09 Sep 2020 15:42:50 -0300</lastBuildDate>
         <atom:link href="https://victor.dev.br/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Processes and Threads</title>
+            <link>https://victor.dev.br/posts/processes-threads/</link>
+            <pubDate>Wed, 09 Sep 2020 15:42:50 -0300</pubDate>
+            
+            <guid>https://victor.dev.br/posts/processes-threads/</guid>
+            <description>Threads and Processes In this article, I present an overview about processes and threads.
+Processes A process can be explained as “a program being executed“.
+A process is not a program. You can have n processes for the same program. For example, when you open a tab in Chrome, it creates a new process called Google Chrome Helper (Renderer). So, Google Chrome can have multiple processes.
+In the image above, I have multiple Chrome processes.</description>
+            <content type="html"><![CDATA[<h1 id="threads-and-processes">Threads and Processes</h1>
+<p>In this article, I present an overview about processes and threads.</p>
+<h1 id="processes">Processes</h1>
+<p>A process can be explained as “a program being executed“.</p>
+<p>A process is not a program. You can have <strong>n</strong> processes for the same program. For example, when you open a tab in Chrome, it creates a new process called <code>Google Chrome Helper (Renderer)</code>. So, Google Chrome can have multiple processes.</p>
+<p><img src="" alt="img"> <em>In the image above, I have multiple Chrome processes.</em></p>
+<p>It’s important to say that Chrome create these processes not only for tabs, but also for extensions. For example, when I force closed one process, a message appeared “Extension <em>X</em> stopped working”.</p>
+<h2 id="processes-and-the-operating-system">Processes and the Operating System</h2>
+<p>When your OS starts, if it uses UNIX like MacOS, it will start an initial process, and all processes created later will be derived from this one. A process can create other. For example: from a Google Chrome tab, I can open another tab.</p>
+<p>The process has all information for your program run in CPU, including:</p>
+<ul>
+<li><strong>Text Section</strong>: contains the program code.</li>
+<li><strong>Program Counter</strong>: is a pointer to the current code instruction being executed.</li>
+<li><strong>Stack:</strong> where the temporary data are stored, like function parameters.</li>
+<li><strong>Data section:</strong> where global data is stored.</li>
+<li><strong>Heap:</strong> dynamically located memory during execution.</li>
+</ul>
+<h2 id="static-vs-dynamic-allocation">Static VS Dynamic Allocation</h2>
+<p>When we talk about static and dynamic allocation, we’re talking about the costs related to storing data in <strong>Data section</strong>, <strong>Stack</strong> and <strong>Heap</strong>.</p>
+<p>An amazing article from Shubham Bakshi, that talks about static vs dynamic dispatch in iOS can be found <a href="https://medium.com/flawless-app-stories/static-vs-dynamic-dispatch-in-swift-a-decisive-choice-cece1e872d">here</a>.</p>
+<h1 id="threads">Threads</h1>
+<p>Thread is a basic unity of CPU usage. A process can have <strong>n</strong> threads, where each thread can be focused into a different work, like a thread for UI, a thread for networking, and so on.</p>
+<p>Exploring an UI thread. We all know that we shouldn’t make a heavy processing operation in main/UI thread. As this thread should be used for user interactions, if it uses its processing time for another task, like fetching data from an API, the user interaction will be delayed, blocking the UI.</p>
+<p>It’s important to say that different threads of a process share the code section, the data section and OS resources being used by the process.</p>
+<p>Threads are cheaper to create and switch in CPU. Switching between processes requires the OS to replace all contextual information in CPU, including code and data sections. Thread switching is cheaper for many reasons, including the fact that switching threads from a same process doesn’t require to switch the code or data section, as it is shared and is already available in CPU.</p>
+<h1 id="references">References</h1>
+<p>Operating System Concepts, 9th edition, <em>Abraham Silberschatz.</em></p>
+]]></content>
+        </item>
         
         <item>
             <title>Hello, World!</title>
