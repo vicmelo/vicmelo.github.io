@@ -7,10 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Wed, 09 Sep 2020 15:42:50 -0300</lastBuildDate>
+    <lastBuildDate>Wed, 25 Nov 2020 16:58:25 -0300</lastBuildDate>
     
 	<atom:link href="https://victor.dev.br/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Swift Failable Initializer</title>
+      <link>https://victor.dev.br/posts/swift-failable-initializer/</link>
+      <pubDate>Wed, 25 Nov 2020 16:58:25 -0300</pubDate>
+      
+      <guid>https://victor.dev.br/posts/swift-failable-initializer/</guid>
+      <description>Swift: Failable Initializer Consider the case below:
+final class Human { let name: String var age: Int init(name: String, age: Int) { self.name = name self.age = age } } This is a simple class that represents a human being. At a first glance, we may not see any problem in this definition… or do we?
+To understand the problems, we can play with the boundaries values. (This is a technique widely used in software testing).</description>
+    </item>
     
     <item>
       <title>Processes and Threads</title>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="">
+<meta name="description" content="Swift: Failable Initializer Consider the case below:
+final class Human { let name: String var age: Int init(name: String, age: Int) { self.name = name self.age = age } } This is a simple class that represents a human being. At a first glance, we may not see any problem in this definition… or do we?
+To understand the problems, we can play with the boundaries values. (This is a technique widely used in software testing)." />
+<meta name="keywords" content=", swift" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://victor.dev.br/posts/swift-failable-initializer/" />
+
+
+    <title>
+        
+            Swift Failable Initializer :: Victor S. Melo  — Computer scientist specialized in Apple platforms 🍎
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/main.d1ea4af8fd04fb24a4f8b882ea54bd04eb245427ca4baf527c81a5dab071410b.css">
+
+
+
+
+
+
+<meta itemprop="name" content="Swift Failable Initializer">
+<meta itemprop="description" content="Swift: Failable Initializer Consider the case below:
+final class Human { let name: String var age: Int init(name: String, age: Int) { self.name = name self.age = age } } This is a simple class that represents a human being. At a first glance, we may not see any problem in this definition… or do we?
+To understand the problems, we can play with the boundaries values. (This is a technique widely used in software testing).">
+<meta itemprop="datePublished" content="2020-11-25T16:58:25-03:00" />
+<meta itemprop="dateModified" content="2020-11-25T16:58:25-03:00" />
+<meta itemprop="wordCount" content="585">
+<meta itemprop="image" content="https://victor.dev.br/email"/>
+
+
+
+<meta itemprop="keywords" content="swift," />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://victor.dev.br/email"/>
+
+<meta name="twitter:title" content="Swift Failable Initializer"/>
+<meta name="twitter:description" content="Swift: Failable Initializer Consider the case below:
+final class Human { let name: String var age: Int init(name: String, age: Int) { self.name = name self.age = age } } This is a simple class that represents a human being. At a first glance, we may not see any problem in this definition… or do we?
+To understand the problems, we can play with the boundaries values. (This is a technique widely used in software testing)."/>
+
+
+
+    <meta property="og:title" content="Swift Failable Initializer" />
+<meta property="og:description" content="Swift: Failable Initializer Consider the case below:
+final class Human { let name: String var age: Int init(name: String, age: Int) { self.name = name self.age = age } } This is a simple class that represents a human being. At a first glance, we may not see any problem in this definition… or do we?
+To understand the problems, we can play with the boundaries values. (This is a technique widely used in software testing)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://victor.dev.br/posts/swift-failable-initializer/" />
+<meta property="og:image" content="https://victor.dev.br/email"/>
+<meta property="article:published_time" content="2020-11-25T16:58:25-03:00" />
+<meta property="article:modified_time" content="2020-11-25T16:58:25-03:00" /><meta property="og:site_name" content="Victor S. Melo" />
+
+
+
+
+
+
+    <meta property="article:published_time" content="2020-11-25 16:58:25 -0300 -03" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">cd ~/</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://victor.dev.br/posts">Blog</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        3 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://victor.dev.br/posts/swift-failable-initializer/">Swift Failable Initializer</a>
+      </h1>
+
+      
+
+      <div class="post-content">
+        <h1 id="swift-failable-initializer">Swift: Failable Initializer</h1>
+<p>Consider the case below:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Human</span> {
+	<span style="color:#66d9ef">let</span> name: String
+	<span style="color:#66d9ef">var</span> age: Int
+
+	<span style="color:#66d9ef">init</span>(name: String, age: Int) {
+		<span style="color:#66d9ef">self</span>.name = name
+		<span style="color:#66d9ef">self</span>.age = age
+	}
+}
+</code></pre></div><p>This is a simple class that represents a human being. At a first glance, we may not see any problem in this definition… or do we?</p>
+<p>To understand the problems, we can play with the boundaries values. (This is a technique widely used in software testing). Let’s play:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">let</span> john = Human(name: <span style="color:#e6db74">&#34;John&#34;</span>, age: <span style="color:#ae81ff">26</span>) <span style="color:#75715e">// 1</span>
+
+<span style="color:#66d9ef">let</span> will = Human(name: <span style="color:#e6db74">&#34;Will&#34;</span>, age: <span style="color:#ae81ff">0</span>) <span style="color:#75715e">// 2</span>
+
+<span style="color:#66d9ef">let</span> anne = Human(name: <span style="color:#e6db74">&#34;&#34;</span>, age: <span style="color:#ae81ff">999</span>) <span style="color:#75715e">// 3</span>
+
+<span style="color:#66d9ef">let</span> mary = Human (name: <span style="color:#e6db74">&#34;23&#34;</span>, age: <span style="color:#f92672">-</span><span style="color:#ae81ff">12</span>) <span style="color:#75715e">// 4</span>
+
+</code></pre></div><ul>
+<li><strong>// 1:</strong> This is a default case. It&rsquo;s how we expect our class to be used;</li>
+<li><strong>// 2:</strong> Here we see that our human instance has age 0. That may make sense or not, depending only on our business (is this a baby registering app?).</li>
+<li><strong>// 3:</strong> This case doesn’t make any sense. This human has no name. At the same time, it is the oldest person humanity has ever seen.</li>
+<li><strong>// 4:</strong> Here we have a person with a weird name and negative age.</li>
+</ul>
+<h1 id="solutions">Solutions</h1>
+<p>There are a few options to mitigate this problem. We can just make a treatments like if the age is below zero, it should be converted to zero. Then we define some unit tests to guarantee it is working:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Human</span> {
+	<span style="color:#66d9ef">let</span> name: String
+	<span style="color:#66d9ef">var</span> age: Int
+
+	<span style="color:#66d9ef">init</span>(name: String, age: Int) {
+		<span style="color:#66d9ef">self</span>.name = name
+		<span style="color:#66d9ef">self</span>.age = age <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> ? age : <span style="color:#ae81ff">0</span>
+	}
+}
+
+<span style="color:#75715e">// Test Bundle:</span>
+
+<span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HumanTests</span>: XCTestCase {
+  <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">test_initWithNegativeAge_expectHumanWithAgeZero</span>() {
+    <span style="color:#66d9ef">let</span> human = Human(<span style="color:#e6db74">&#34;John&#34;</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">12</span>)
+    XCTAssertEqual(human.age, <span style="color:#ae81ff">0</span>)
+  }
+}
+
+</code></pre></div><p>But it still doesn’t seem right&hellip;</p>
+<p>We are telling “I want a human with negative age”, and the code is returning to us a Human instance, but the data is not what we expected. This can lead to a missunderstanding.</p>
+<p>Another problem I see here is that our class <code>Human</code> is responsible to solve the invalid input. When we talk about <a href="https://en.wikipedia.org/wiki/Single-responsibility_principle">single responsibility principle</a>, <code>Human</code> is doing more than it should.</p>
+<p>Another solution could be defining a <a href="https://en.wikipedia.org/wiki/Design_by_contract">contract</a> for the initializer. Personally I don&rsquo;t like to recur to contracts. For me, the fact that it is heavily dependant on the programmer usage is a risk. That&rsquo;s the reason I use this as a last resource.</p>
+<p>But don&rsquo;t worry! This is a classic case where an optional initializer is useful. If we don’t want humans instances with negative age or empty name, we can just don’t create it. This way we may prevent this error to propagate through the code.</p>
+<p>The solution using optional initializer would look like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Human</span> {
+	<span style="color:#66d9ef">let</span> name: String
+	<span style="color:#66d9ef">var</span> age: Int
+
+	<span style="color:#66d9ef">init</span>?(name: String, age: Int) {
+		<span style="color:#66d9ef">guard</span> <span style="color:#f92672">!</span>name.isEmpty <span style="color:#f92672">&amp;&amp;</span> age <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">else</span> { <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span> }
+		<span style="color:#66d9ef">self</span>.name = name
+		<span style="color:#66d9ef">self</span>.age = age
+	}
+}
+
+<span style="color:#75715e">// Test Bundle:</span>
+
+<span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HumanTests</span>: XCTestCase {
+  <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">test_initWithNegativeAge_expectNil</span>() {
+    <span style="color:#66d9ef">let</span> human = Human(<span style="color:#e6db74">&#34;John&#34;</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">12</span>)
+    XCTAssertNil(human)
+  }
+}
+
+
+</code></pre></div><p>This solution leave to the caller of <code>Human.init</code> to handle the invalid cases. It makes sense to me to leave this responsibility to the caller, as it was the one that used these invalid inputs.</p>
+<p>We may apply any business rules inside optional initializer, but be careful to don&rsquo;t overload it with complex code. If you use it carefully, combining it with good unit tests, you will make your code better and your system safer :)</p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+        <p>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon">
+            <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+            <line x1="7" y1="7" x2="7" y2="7"></line>
+          </svg><span class="tag"><a href="https://victor.dev.br/tags/swift/">swift</a></span>
+        </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        585 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        2020-11-25 16:58 -0300
+      </p>
+    </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h">Read other posts</span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+
+          
+            <span class="button next">
+              <a href="https://victor.dev.br/posts/processes-threads/">
+                <span class="button__text">Processes and Threads</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2020</span>
+            
+            
+                <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            
+            <span> <a href="https://victor.dev.br/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made with &#10084; by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="/bundle.min.dc716e9092c9820b77f96da294d0120aeeb189b5bcea9752309ebea27fd53bbe6b13cffb2aca8ecf32525647ceb7001f76091de4199ac5a3caa432c070247f5b.js" integrity="sha512-3HFukJLJggt3&#43;W2ilNASCu6xibW86pdSMJ6&#43;on/VO75rE8/7KsqOzzJSVkfOtwAfdgkd5BmaxaPKpDLAcCR/Ww=="></script>
+
+
+
+    </body>
+</html>

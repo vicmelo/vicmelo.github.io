@@ -6,8 +6,97 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Wed, 09 Sep 2020 15:42:50 -0300</lastBuildDate>
+        <lastBuildDate>Wed, 25 Nov 2020 16:58:25 -0300</lastBuildDate>
         <atom:link href="https://victor.dev.br/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Swift Failable Initializer</title>
+            <link>https://victor.dev.br/posts/swift-failable-initializer/</link>
+            <pubDate>Wed, 25 Nov 2020 16:58:25 -0300</pubDate>
+            
+            <guid>https://victor.dev.br/posts/swift-failable-initializer/</guid>
+            <description>Swift: Failable Initializer Consider the case below:
+final class Human { let name: String var age: Int init(name: String, age: Int) { self.name = name self.age = age } } This is a simple class that represents a human being. At a first glance, we may not see any problem in this definition… or do we?
+To understand the problems, we can play with the boundaries values. (This is a technique widely used in software testing).</description>
+            <content type="html"><![CDATA[<h1 id="swift-failable-initializer">Swift: Failable Initializer</h1>
+<p>Consider the case below:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Human</span> {
+	<span style="color:#66d9ef">let</span> name: String
+	<span style="color:#66d9ef">var</span> age: Int
+
+	<span style="color:#66d9ef">init</span>(name: String, age: Int) {
+		<span style="color:#66d9ef">self</span>.name = name
+		<span style="color:#66d9ef">self</span>.age = age
+	}
+}
+</code></pre></div><p>This is a simple class that represents a human being. At a first glance, we may not see any problem in this definition… or do we?</p>
+<p>To understand the problems, we can play with the boundaries values. (This is a technique widely used in software testing). Let’s play:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">let</span> john = Human(name: <span style="color:#e6db74">&#34;John&#34;</span>, age: <span style="color:#ae81ff">26</span>) <span style="color:#75715e">// 1</span>
+
+<span style="color:#66d9ef">let</span> will = Human(name: <span style="color:#e6db74">&#34;Will&#34;</span>, age: <span style="color:#ae81ff">0</span>) <span style="color:#75715e">// 2</span>
+
+<span style="color:#66d9ef">let</span> anne = Human(name: <span style="color:#e6db74">&#34;&#34;</span>, age: <span style="color:#ae81ff">999</span>) <span style="color:#75715e">// 3</span>
+
+<span style="color:#66d9ef">let</span> mary = Human (name: <span style="color:#e6db74">&#34;23&#34;</span>, age: <span style="color:#f92672">-</span><span style="color:#ae81ff">12</span>) <span style="color:#75715e">// 4</span>
+
+</code></pre></div><ul>
+<li><strong>// 1:</strong> This is a default case. It&rsquo;s how we expect our class to be used;</li>
+<li><strong>// 2:</strong> Here we see that our human instance has age 0. That may make sense or not, depending only on our business (is this a baby registering app?).</li>
+<li><strong>// 3:</strong> This case doesn’t make any sense. This human has no name. At the same time, it is the oldest person humanity has ever seen.</li>
+<li><strong>// 4:</strong> Here we have a person with a weird name and negative age.</li>
+</ul>
+<h1 id="solutions">Solutions</h1>
+<p>There are a few options to mitigate this problem. We can just make a treatments like if the age is below zero, it should be converted to zero. Then we define some unit tests to guarantee it is working:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Human</span> {
+	<span style="color:#66d9ef">let</span> name: String
+	<span style="color:#66d9ef">var</span> age: Int
+
+	<span style="color:#66d9ef">init</span>(name: String, age: Int) {
+		<span style="color:#66d9ef">self</span>.name = name
+		<span style="color:#66d9ef">self</span>.age = age <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> ? age : <span style="color:#ae81ff">0</span>
+	}
+}
+
+<span style="color:#75715e">// Test Bundle:</span>
+
+<span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HumanTests</span>: XCTestCase {
+  <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">test_initWithNegativeAge_expectHumanWithAgeZero</span>() {
+    <span style="color:#66d9ef">let</span> human = Human(<span style="color:#e6db74">&#34;John&#34;</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">12</span>)
+    XCTAssertEqual(human.age, <span style="color:#ae81ff">0</span>)
+  }
+}
+
+</code></pre></div><p>But it still doesn’t seem right&hellip;</p>
+<p>We are telling “I want a human with negative age”, and the code is returning to us a Human instance, but the data is not what we expected. This can lead to a missunderstanding.</p>
+<p>Another problem I see here is that our class <code>Human</code> is responsible to solve the invalid input. When we talk about <a href="https://en.wikipedia.org/wiki/Single-responsibility_principle">single responsibility principle</a>, <code>Human</code> is doing more than it should.</p>
+<p>Another solution could be defining a <a href="https://en.wikipedia.org/wiki/Design_by_contract">contract</a> for the initializer. Personally I don&rsquo;t like to recur to contracts. For me, the fact that it is heavily dependant on the programmer usage is a risk. That&rsquo;s the reason I use this as a last resource.</p>
+<p>But don&rsquo;t worry! This is a classic case where an optional initializer is useful. If we don’t want humans instances with negative age or empty name, we can just don’t create it. This way we may prevent this error to propagate through the code.</p>
+<p>The solution using optional initializer would look like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Human</span> {
+	<span style="color:#66d9ef">let</span> name: String
+	<span style="color:#66d9ef">var</span> age: Int
+
+	<span style="color:#66d9ef">init</span>?(name: String, age: Int) {
+		<span style="color:#66d9ef">guard</span> <span style="color:#f92672">!</span>name.isEmpty <span style="color:#f92672">&amp;&amp;</span> age <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">else</span> { <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span> }
+		<span style="color:#66d9ef">self</span>.name = name
+		<span style="color:#66d9ef">self</span>.age = age
+	}
+}
+
+<span style="color:#75715e">// Test Bundle:</span>
+
+<span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HumanTests</span>: XCTestCase {
+  <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">test_initWithNegativeAge_expectNil</span>() {
+    <span style="color:#66d9ef">let</span> human = Human(<span style="color:#e6db74">&#34;John&#34;</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">12</span>)
+    XCTAssertNil(human)
+  }
+}
+
+
+</code></pre></div><p>This solution leave to the caller of <code>Human.init</code> to handle the invalid cases. It makes sense to me to leave this responsibility to the caller, as it was the one that used these invalid inputs.</p>
+<p>We may apply any business rules inside optional initializer, but be careful to don&rsquo;t overload it with complex code. If you use it carefully, combining it with good unit tests, you will make your code better and your system safer :)</p>
+]]></content>
+        </item>
         
         <item>
             <title>Processes and Threads</title>

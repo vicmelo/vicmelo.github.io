@@ -3,12 +3,32 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://victor.dev.br/tags/operating-system/</loc>
-    <lastmod>2020-09-09T15:42:50-03:00</lastmod>
+    <loc>https://victor.dev.br/posts/</loc>
+    <lastmod>2020-11-25T16:58:25-03:00</lastmod>
   </url>
   
   <url>
-    <loc>https://victor.dev.br/posts/</loc>
+    <loc>https://victor.dev.br/tags/swift/</loc>
+    <lastmod>2020-11-25T16:58:25-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://victor.dev.br/posts/swift-failable-initializer/</loc>
+    <lastmod>2020-11-25T16:58:25-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://victor.dev.br/tags/</loc>
+    <lastmod>2020-11-25T16:58:25-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://victor.dev.br/</loc>
+    <lastmod>2020-11-25T16:58:25-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://victor.dev.br/tags/operating-system/</loc>
     <lastmod>2020-09-09T15:42:50-03:00</lastmod>
   </url>
   
@@ -23,17 +43,7 @@
   </url>
   
   <url>
-    <loc>https://victor.dev.br/tags/</loc>
-    <lastmod>2020-09-09T15:42:50-03:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://victor.dev.br/tags/threads/</loc>
-    <lastmod>2020-09-09T15:42:50-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://victor.dev.br/</loc>
     <lastmod>2020-09-09T15:42:50-03:00</lastmod>
   </url>
   
