@@ -15,11 +15,10 @@
             <pubDate>Wed, 25 Nov 2020 16:58:25 -0300</pubDate>
             
             <guid>https://victor.dev.br/posts/swift-failable-initializer/</guid>
-            <description>Swift: Failable Initializer Consider the case below:
+            <description>Consider the case below:
 final class Human { let name: String var age: Int init(name: String, age: Int) { self.name = name self.age = age } } This is a simple class that represents a human being. At a first glance, we may not see any problem in this definition… or do we?
 To understand the problems, we can play with the boundaries values. (This is a technique widely used in software testing).</description>
-            <content type="html"><![CDATA[<h1 id="swift-failable-initializer">Swift: Failable Initializer</h1>
-<p>Consider the case below:</p>
+            <content type="html"><![CDATA[<p>Consider the case below:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Human</span> {
 	<span style="color:#66d9ef">let</span> name: String
 	<span style="color:#66d9ef">var</span> age: Int

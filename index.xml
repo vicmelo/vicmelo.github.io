@@ -18,7 +18,7 @@
       <pubDate>Wed, 25 Nov 2020 16:58:25 -0300</pubDate>
       
       <guid>https://victor.dev.br/posts/swift-failable-initializer/</guid>
-      <description>Swift: Failable Initializer Consider the case below:
+      <description>Consider the case below:
 final class Human { let name: String var age: Int init(name: String, age: Int) { self.name = name self.age = age } } This is a simple class that represents a human being. At a first glance, we may not see any problem in this definition… or do we?
 To understand the problems, we can play with the boundaries values. (This is a technique widely used in software testing).</description>
     </item>
