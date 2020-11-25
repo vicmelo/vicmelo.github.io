@@ -92,7 +92,7 @@ To understand the problems, we can play with the boundaries values. (This is a t
 }
 
 
-</code></pre></div><p>This solution leave to the caller of <code>Human.init</code> to handle the invalid cases. It makes sense to me to leave this responsibility to the caller, as it was the one that used these invalid inputs.</p>
+</code></pre></div><p>This solution leaves to the caller of <code>Human.init</code> the responsibility to handle the invalid cases. It makes sense to as the caller was the one that used these invalid inputs.</p>
 <p>We may apply any business rules inside optional initializer, but be careful to don&rsquo;t overload it with complex code. If you use it carefully, combining it with good unit tests, you will make your code better and your system safer :)</p>
 ]]></content>
         </item>

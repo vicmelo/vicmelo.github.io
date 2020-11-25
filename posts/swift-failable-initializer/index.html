@@ -40,7 +40,7 @@ final class Human { let name: String var age: Int init(name: String, age: Int) {
 To understand the problems, we can play with the boundaries values. (This is a technique widely used in software testing).">
 <meta itemprop="datePublished" content="2020-11-25T16:58:25-03:00" />
 <meta itemprop="dateModified" content="2020-11-25T16:58:25-03:00" />
-<meta itemprop="wordCount" content="582">
+<meta itemprop="wordCount" content="577">
 <meta itemprop="image" content="https://victor.dev.br/email"/>
 
 
@@ -226,7 +226,7 @@ To understand the problems, we can play with the boundaries values. (This is a t
 }
 
 
-</code></pre></div><p>This solution leave to the caller of <code>Human.init</code> to handle the invalid cases. It makes sense to me to leave this responsibility to the caller, as it was the one that used these invalid inputs.</p>
+</code></pre></div><p>This solution leaves to the caller of <code>Human.init</code> the responsibility to handle the invalid cases. It makes sense to as the caller was the one that used these invalid inputs.</p>
 <p>We may apply any business rules inside optional initializer, but be careful to don&rsquo;t overload it with complex code. If you use it carefully, combining it with good unit tests, you will make your code better and your system safer :)</p>
 
       </div>
@@ -250,7 +250,7 @@ To understand the problems, we can play with the boundaries values. (This is a t
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        582 Words
+        577 Words
       </p>
 
       <p>
