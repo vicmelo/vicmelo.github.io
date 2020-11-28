@@ -18,7 +18,7 @@
       <pubDate>Wed, 09 Sep 2020 15:42:50 -0300</pubDate>
       
       <guid>https://victor.dev.br/posts/processes-threads/</guid>
-      <description>In this article, I present an overview about processes and threads.
+      <description>In this article, I present an overview of processes and threads.
 Processes A process can be explained as “a program being executed“.
 A process is not a program. You can have n processes for the same program. For example, when you open a tab in Chrome, it creates a new process called Google Chrome Helper (Renderer). So, Google Chrome can have multiple processes.
 In the image above, I have multiple Chrome processes.</description>
