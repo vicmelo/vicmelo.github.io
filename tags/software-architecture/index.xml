@@ -18,7 +18,8 @@
       <pubDate>Sun, 29 Nov 2020 15:51:45 -0300</pubDate>
       
       <guid>https://victor.dev.br/posts/trying-to-apply-interactor-in-swiftui/</guid>
-      <description>Trying to apply Interactor in SwiftUI When we talk about SwiftUI, we must first understand that the patterns applied to UIKit can’t be directly applied in this new approach. The problems we need to solve when we use UIKit are different from the ones when we use SwiftUI, and trying to apply the same solutions as it is to both seems to be a lazy approach that will lead you to headaches in the future.</description>
+      <description>When we talk about SwiftUI, we must first understand that the patterns applied to UIKit can’t be directly applied in this new approach. The problems we need to solve when we use UIKit are different from the ones when we use SwiftUI, and trying to apply the same solutions as it is to both seems to be a lazy approach that will lead you to headaches in the future.
+But I will not be a hypocrite here.</description>
     </item>
     
   </channel>
