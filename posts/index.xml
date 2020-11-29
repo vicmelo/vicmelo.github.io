@@ -22,9 +22,9 @@ But I will not be a hypocrite here.</description>
 <p>During my recent experience with SwiftUI, for an indie app I’ve been developing, I was trying to find an approach to handle persistence encapsulation. My first solution was to persist in UserDefaults, but using an architecture approach where when I need to replace UserDefaults for a better solution, I can replace the integration just in one place in the code.</p>
 <h1 id="interactors">Interactors</h1>
 <p>During my research for a solution, I found out <strong>Interactors</strong>, a component broadly used in VIPER and VIP architectures. It’s an interface between model or data persistence layers and the UI modules that, in my case, were the views and view models. I decided to use ViewModel for my project as a suggestion from a SwiftUI Apple engineer during a lab at WWDC2020, where he assisted me with my project architecture.</p>
-<p>Something we need to understand when we’re developing our project is that <strong>all patterns are adaptable</strong>. We don’t need to implement VIP to use Interactor. We can adapt this component to what we need, and in most cases, we will find components that solve the same problem being used in different architectures with different names. For example, an <strong>Interactor</strong> is just an <strong>Interface</strong>, like in Java, where we provide a set of behavior and whoever will conform to that Interface must implement these behaviors. And guess what? A <strong>Protocol</strong>  in Swift can be seen as an <strong>Interface</strong> in Java, and so on. Of course, each approach has its nuances, but the purpose of usage is similar.</p>
+<p>Something we need to understand when we’re developing our project is that <em><strong>all patterns are adaptable</strong></em>. We don’t need to implement VIP to use Interactor. We can adapt this component to what we need, and in most cases, we will find components that solve the same problem being used in different architectures with different names. For example, an <strong>Interactors</strong> is just an <strong>Interface</strong>, like in Java, where we provide a set of behavior and whoever will conform to that Interface must implement these behaviors. And guess what? A <strong>Protocol</strong>  in Swift can be seen as an <strong>Interface</strong> in Java, and so on. Of course, each approach has its nuances, but the purpose of usage is similar.</p>
 <h1 id="enough-talk-show-me-the-code">Enough Talk! Show me the code</h1>
-<p>I will share my implementation for <strong>Interactor</strong> in my project, but you should understand that it should not be used directly in yours. You are welcome to adapt it if you need, but you must understand that your project is unique, reflecting on what you are coding.</p>
+<p>I will share my implementation for <strong>Interactors</strong> in my project, but you should understand that it should not be used directly in yours. You are welcome to adapt it if you need, but you must understand that your project is unique, reflecting on what you are coding.</p>
 <h2 id="maininteractor">MainInteractor</h2>
 <p>This is a protocol to be conformed from anyone who wants to become an Interactor:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">MainInteractor</span> {
@@ -40,7 +40,7 @@ But I will not be a hypocrite here.</description>
     @Published <span style="color:#66d9ef">var</span> user = User()
 }
 </code></pre></div><h2 id="maininteractorimp">MainInteractorImp</h2>
-<p>MainInteractorImp is my component that conforms to the protocol <strong>MainInteractor</strong>:</p>
+<p><strong>MainInteractorImp</strong> is my component that conforms to the protocol <strong>MainInteractor</strong>:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">MainInteractorImp</span>: MainInteractor {
     
     <span style="color:#66d9ef">let</span> userRepository: AppStateRepository
@@ -59,7 +59,7 @@ But I will not be a hypocrite here.</description>
         userRepository.saveUser(appState.user)
     }
 }
-</code></pre></div><p><em>AppStateRepository</em> is just a wrapper that is responsible for the persistence logic. As the <em>Interactor</em> should not only be used for persistence, and in the future, I may give it other responsibilities, like networking calls, I want to be able to replace only the <em>AppStateRepository</em> for only persistence changes.</p>
+</code></pre></div><p><strong>AppStateRepository</strong> is just a wrapper that is responsible for the persistence logic. As the <strong>Interactor</strong> should not only be used for persistence, and in the future, I may give it other responsibilities, like networking calls, I want to be able to replace only the <strong>AppStateRepository</strong> for only persistence changes.</p>
 <h2 id="interactorscontainer">InteractorsContainer</h2>
 <p>InteractorsContainer is a singleton that wraps the Interactor used in the project. It’s the element that will be integrated with the SwiftUI, allowing us to change almost every other layer explained above without needing to change any code inside the SwiftUI views.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">SwiftUI</span>
@@ -85,7 +85,7 @@ But I will not be a hypocrite here.</description>
     }
 }
 
-</code></pre></div><p><em>InteractorsContainer</em> is initialized in SceneDelegate to load data when the app starts, and it sets the app state as an environment object, like below:</p>
+</code></pre></div><p><strong>InteractorsContainer</strong> is initialized in SceneDelegate to load data when the app starts, and it sets the app state as an environment object, like below:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">scene</span>(<span style="color:#66d9ef">_</span> scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         <span style="color:#66d9ef">let</span> interactors = InteractorsContainer.defaultValue
         interactors.mainInteractor.loadAppState()
