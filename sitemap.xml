@@ -4,26 +4,36 @@
   
   <url>
     <loc>https://victor.dev.br/posts/</loc>
-    <lastmod>2020-11-25T16:58:25-03:00</lastmod>
+    <lastmod>2020-11-29T15:51:45-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://victor.dev.br/tags/software-architecture/</loc>
+    <lastmod>2020-11-29T15:51:45-03:00</lastmod>
   </url>
   
   <url>
     <loc>https://victor.dev.br/tags/swift/</loc>
-    <lastmod>2020-11-25T16:58:25-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://victor.dev.br/posts/swift-failable-initializer/</loc>
-    <lastmod>2020-11-25T16:58:25-03:00</lastmod>
+    <lastmod>2020-11-29T15:51:45-03:00</lastmod>
   </url>
   
   <url>
     <loc>https://victor.dev.br/tags/</loc>
-    <lastmod>2020-11-25T16:58:25-03:00</lastmod>
+    <lastmod>2020-11-29T15:51:45-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://victor.dev.br/posts/trying-to-apply-interactor-in-swiftui/</loc>
+    <lastmod>2020-11-29T15:51:45-03:00</lastmod>
   </url>
   
   <url>
     <loc>https://victor.dev.br/</loc>
+    <lastmod>2020-11-29T15:51:45-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://victor.dev.br/posts/swift-failable-initializer/</loc>
     <lastmod>2020-11-25T16:58:25-03:00</lastmod>
   </url>
   

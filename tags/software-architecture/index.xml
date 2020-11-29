@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>swift on Victor S. Melo</title>
-    <link>https://victor.dev.br/tags/swift/</link>
-    <description>Recent content in swift on Victor S. Melo</description>
+    <title>software architecture on Victor S. Melo</title>
+    <link>https://victor.dev.br/tags/software-architecture/</link>
+    <description>Recent content in software architecture on Victor S. Melo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
     <lastBuildDate>Sun, 29 Nov 2020 15:51:45 -0300</lastBuildDate>
     
-	<atom:link href="https://victor.dev.br/tags/swift/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://victor.dev.br/tags/software-architecture/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,17 +19,6 @@
       
       <guid>https://victor.dev.br/posts/trying-to-apply-interactor-in-swiftui/</guid>
       <description>Trying to apply Interactor in SwiftUI When we talk about SwiftUI, we must first understand that the patterns applied to UIKit can’t be directly applied in this new approach. The problems we need to solve when we use UIKit are different from the ones when we use SwiftUI, and trying to apply the same solutions as it is to both seems to be a lazy approach that will lead you to headaches in the future.</description>
-    </item>
-    
-    <item>
-      <title>Swift Failable Initializer</title>
-      <link>https://victor.dev.br/posts/swift-failable-initializer/</link>
-      <pubDate>Wed, 25 Nov 2020 16:58:25 -0300</pubDate>
-      
-      <guid>https://victor.dev.br/posts/swift-failable-initializer/</guid>
-      <description>Consider the case below:
-final class Human { let name: String var age: Int init(name: String, age: Int) { self.name = name self.age = age } } This is a simple class that represents a human being. At a first glance, we may not see any problem in this definition… or do we?
-To understand the problems, we can play with the boundaries values. (This is a technique widely used in software testing).</description>
     </item>
     
   </channel>

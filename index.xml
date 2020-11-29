@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Wed, 25 Nov 2020 16:58:25 -0300</lastBuildDate>
+    <lastBuildDate>Sun, 29 Nov 2020 15:51:45 -0300</lastBuildDate>
     
 	<atom:link href="https://victor.dev.br/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Trying to Apply Interactor in SwiftUI</title>
+      <link>https://victor.dev.br/posts/trying-to-apply-interactor-in-swiftui/</link>
+      <pubDate>Sun, 29 Nov 2020 15:51:45 -0300</pubDate>
+      
+      <guid>https://victor.dev.br/posts/trying-to-apply-interactor-in-swiftui/</guid>
+      <description>Trying to apply Interactor in SwiftUI When we talk about SwiftUI, we must first understand that the patterns applied to UIKit can’t be directly applied in this new approach. The problems we need to solve when we use UIKit are different from the ones when we use SwiftUI, and trying to apply the same solutions as it is to both seems to be a lazy approach that will lead you to headaches in the future.</description>
+    </item>
     
     <item>
       <title>Swift Failable Initializer</title>

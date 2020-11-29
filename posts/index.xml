@@ -6,8 +6,115 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Wed, 25 Nov 2020 16:58:25 -0300</lastBuildDate>
+        <lastBuildDate>Sun, 29 Nov 2020 15:51:45 -0300</lastBuildDate>
         <atom:link href="https://victor.dev.br/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Trying to Apply Interactor in SwiftUI</title>
+            <link>https://victor.dev.br/posts/trying-to-apply-interactor-in-swiftui/</link>
+            <pubDate>Sun, 29 Nov 2020 15:51:45 -0300</pubDate>
+            
+            <guid>https://victor.dev.br/posts/trying-to-apply-interactor-in-swiftui/</guid>
+            <description>Trying to apply Interactor in SwiftUI When we talk about SwiftUI, we must first understand that the patterns applied to UIKit can’t be directly applied in this new approach. The problems we need to solve when we use UIKit are different from the ones when we use SwiftUI, and trying to apply the same solutions as it is to both seems to be a lazy approach that will lead you to headaches in the future.</description>
+            <content type="html"><![CDATA[<h1 id="trying-to-apply-interactor-in-swiftui">Trying to apply Interactor in SwiftUI</h1>
+<p>When we talk about SwiftUI, we must first understand that the patterns applied to UIKit can’t be directly applied in this new approach. The problems we need to solve when we use UIKit are different from the ones when we use SwiftUI, and trying to apply the same solutions as it is to both seems to be a lazy approach that will lead you to headaches in the future.</p>
+<p>But I will not be a hypocrite here. It’s inevitable that, as human beings, we make connections between what we already know to anything we are trying to learn. It’s a natural and really useful tool helping us to learn faster and to make brain connections that will last longer. That’s the reason you’ll find many online articles entitled “Applying MVC in SwiftUI”, “SwiftUI with MVVM”, or any other architecture broadly applied in the UIKit development world, like VIPER, VIP, and so on. These articles are the result of people trying to make connections between what they know to what they are learning.</p>
+<p>During my recent experience with SwiftUI, for an indie app I’ve been developing, I was trying to find an approach to handle persistence encapsulation. My first solution was to persist in UserDefaults, but using an architecture approach where when I need to replace UserDefaults for a better solution, I can replace the integration just in one place in the code.</p>
+<h1 id="interactors">Interactors</h1>
+<p>During my research for a solution, I found out <strong>Interactors</strong>, a component broadly used in VIPER and VIP architectures. It’s an interface between model or data persistence layers and the UI modules that, in my case, were the views and view models. I decided to use ViewModel for my project as a suggestion from a SwiftUI Apple engineer during a lab at WWDC2020, where he assisted me with my project architecture.</p>
+<p>Something we need to understand when we’re developing our project is that <strong>all patterns are adaptable</strong>. We don’t need to implement VIP to use Interactor. We can adapt this component to what we need, and in most cases, we will find components that solve the same problem being used in different architectures with different names. For example, an <strong>Interactor</strong> is just an <strong>Interface</strong>, like in Java, where we provide a set of behavior and whoever will conform to that Interface must implement these behaviors. And guess what? A <strong>Protocol</strong>  in Swift can be seen as an <strong>Interface</strong> in Java, and so on. Of course, each approach has its nuances, but the purpose of usage is similar.</p>
+<h1 id="enough-talk-show-me-the-code">Enough Talk! Show me the code</h1>
+<p>I will share my implementation for <strong>Interactor</strong> in my project, but you should understand that it should not be used directly in yours. You are welcome to adapt it if you need, but you must understand that your project is unique, reflecting on what you are coding.</p>
+<h2 id="maininteractor">MainInteractor</h2>
+<p>This is a protocol to be conformed from anyone who wants to become an Interactor:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">protocol</span> <span style="color:#a6e22e">MainInteractor</span> {
+    <span style="color:#66d9ef">var</span> appState: AppState { <span style="color:#66d9ef">get</span> }
+    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">loadAppState</span>()
+    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">saveAppState</span>()
+}
+</code></pre></div><p>I decided to save and load the app state as a whole in one operation. But remember: this is just the interface. If I need, I can make a complex rule to persist and load only the changed data without changing this interface. That&rsquo;s the beauty of encapsulation.</p>
+<p>My AppState is just a model that keeps the data I need to persist. As it is not relevant for this article, I will show an example below:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">SwiftUI</span>
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AppState</span>: ObservableObject {
+    @Published <span style="color:#66d9ef">var</span> user = User()
+}
+</code></pre></div><h2 id="maininteractorimp">MainInteractorImp</h2>
+<p>MainInteractorImp is my component that conforms to the protocol <strong>MainInteractor</strong>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">MainInteractorImp</span>: MainInteractor {
+    
+    <span style="color:#66d9ef">let</span> userRepository: AppStateRepository
+    <span style="color:#66d9ef">let</span> appState: AppState
+    
+    <span style="color:#66d9ef">init</span>(userRepository: AppStateRepository, appState: AppState) {
+        <span style="color:#66d9ef">self</span>.userRepository = userRepository
+        <span style="color:#66d9ef">self</span>.appState = appState
+    }
+    
+    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">loadAppState</span>() {
+        appState.user = userRepository.loadUser()
+    }
+    
+    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">saveAppState</span>() {
+        userRepository.saveUser(appState.user)
+    }
+}
+</code></pre></div><p><em>AppStateRepository</em> is just a wrapper that is responsible for the persistence logic. As the <em>Interactor</em> should not only be used for persistence, and in the future, I may give it other responsibilities, like networking calls, I want to be able to replace only the <em>AppStateRepository</em> for only persistence changes.</p>
+<h2 id="interactorscontainer">InteractorsContainer</h2>
+<p>InteractorsContainer is a singleton that wraps the Interactor used in the project. It’s the element that will be integrated with the SwiftUI, allowing us to change almost every other layer explained above without needing to change any code inside the SwiftUI views.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">SwiftUI</span>
+
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">InteractorsContainer</span>: EnvironmentKey {
+    
+    <span style="color:#66d9ef">let</span> mainInteractor: MainInteractor
+    
+    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">var</span> defaultValue: <span style="color:#66d9ef">Self</span> { <span style="color:#66d9ef">Self</span>.<span style="color:#66d9ef">default</span> }
+    
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">let</span> `<span style="color:#66d9ef">default</span>` = <span style="color:#66d9ef">Self</span>(mainInteractor: MainInteractorImp(userRepository: UserDefaultsAppStateRepository(), appState: AppState()))
+    
+    <span style="color:#66d9ef">init</span>(mainInteractor: MainInteractor) {
+        <span style="color:#66d9ef">self</span>.mainInteractor = mainInteractor
+        <span style="color:#66d9ef">self</span>.mainInteractor.loadAppState()
+    }
+}
+
+<span style="color:#66d9ef">extension</span> <span style="color:#a6e22e">EnvironmentValues</span> {
+    <span style="color:#66d9ef">var</span> interactors: InteractorsContainer {
+        <span style="color:#66d9ef">get</span> { <span style="color:#66d9ef">self</span>[InteractorsContainer.<span style="color:#66d9ef">self</span>] }
+        <span style="color:#66d9ef">set</span> { <span style="color:#66d9ef">self</span>[InteractorsContainer.<span style="color:#66d9ef">self</span>] = newValue }
+    }
+}
+
+</code></pre></div><p><em>InteractorsContainer</em> is initialized in SceneDelegate to load data when the app starts, and it sets the app state as an environment object, like below:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">scene</span>(<span style="color:#66d9ef">_</span> scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        <span style="color:#66d9ef">let</span> interactors = InteractorsContainer.defaultValue
+        interactors.mainInteractor.loadAppState()
+
+		<span style="color:#66d9ef">let</span> myView = CustomView().environmentObject(interactors.mainInteractor.appState)
+		<span style="color:#75715e">// ...</span>
+}
+</code></pre></div><p>Inside SwiftUI views, we will define two parameters:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">OnboardingAvatarPickerView</span>: View {
+    
+    @EnvironmentObject <span style="color:#66d9ef">var</span> appState: AppState
+    @Environment(<span style="color:#960050;background-color:#1e0010">\</span>.interactors) <span style="color:#66d9ef">var</span> interactors: InteractorsContainer
+    
+    <span style="color:#66d9ef">var</span> body: some View {
+		<span style="color:#75715e">//...</span>
+	  }
+}
+</code></pre></div><p>Now, whenever we want to persist some data, we just call <code>self.interactors.mainInteractor.saveAppState()</code> in the View. For example, I have an <code>EditView</code>, where the user changes the app configuration. Then I call this persistence method inside <code>.onDisappear</code>, like below:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">var</span> Body: some View {
+	MyView {
+		<span style="color:#75715e">// any view here</span>
+	}.onDisappear {
+  		<span style="color:#66d9ef">self</span>.interactors.mainInteractor.saveAppState()
+  }
+}
+</code></pre></div><h1 id="conclusion">Conclusion</h1>
+<p>The only thing I hope you’ve learned from this article is that we always need to reflect and understand why we’re taking some action when coding. Don’t do something just because someone said it. Understand what led that person to say it, and reflect on your situation before implementing it. This approach will save you a lot of your time and make you a better software engineer.</p>
+]]></content>
+        </item>
         
         <item>
             <title>Swift Failable Initializer</title>
